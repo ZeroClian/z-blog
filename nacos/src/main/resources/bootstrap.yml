@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: nacos
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+      discovery:
+        server-addr: 127.0.0.1:8848
+  datasource:
+    # ???
+    url: jdbc:mysql://127.0.0.1:3306/zero-web?useUnicode=true&characterEncoding=UTF-8&useInformationSchema=true&enabledTLSProtocols=TLSv1.2&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+
+server:
+  port: 8000
