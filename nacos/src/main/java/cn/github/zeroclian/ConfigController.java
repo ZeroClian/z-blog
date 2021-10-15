@@ -6,6 +6,7 @@ import com.alibaba.nacos.api.NacosFactory;
 import com.alibaba.nacos.api.config.ConfigService;
 import com.alibaba.nacos.api.config.ConfigType;
 import com.alibaba.nacos.api.exception.NacosException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,13 +24,15 @@ import java.util.Properties;
 @RefreshScope
 public class ConfigController {
 
-    private String name;
+    @Value("${spring.cloud.nacos.config.server-addr:127.0.0.1:8848}")
+    private String serverAddr;
+
 
     @GetMapping("/get")
     @IgnoreResponseAdvice
     public String get() {
         try {
-            String serverAddr = "127.0.0.1:8848";
+//            String serverAddr = "127.0.0.1:8848";
             String dataId = "nacos-dev.yml";
             String group = "DEFAULT_GROUP";
             Properties properties = new Properties();
@@ -54,7 +57,7 @@ public class ConfigController {
     public Boolean updateConfig(String name) {
         try {
             // 初始化配置服务，控制台通过示例代码自动获取下面参数
-            String serverAddr = "127.0.0.1:8848";
+//            String serverAddr = "127.0.0.1:8848";
             String dataId = "nacos-dev.yml";
             String group = "DEFAULT_GROUP";
             Properties properties = new Properties();
