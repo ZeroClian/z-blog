@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * redis 分布式锁的守护线程，用于延长锁的有效期
  *
- * @Author: qiyiguo
+ * @Author: ZeroClian
  * @Date: 2021-12-09 3:14 下午
  */
 @Slf4j

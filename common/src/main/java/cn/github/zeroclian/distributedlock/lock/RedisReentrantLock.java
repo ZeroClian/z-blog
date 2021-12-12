@@ -21,7 +21,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 5.   非公平锁
  * 6.   如果客户端没有崩溃,守护线程会在锁超时时间的2/3阶段进行锁的续期
  *
- * @Author: qiyiguo
+ * @Author: ZeroClian
  * @Date: 2021-12-09 3:53 下午
  */
 public class RedisReentrantLock {
@@ -140,9 +140,9 @@ public class RedisReentrantLock {
         if (RedisManager.exists(lockKey)) {
             String lockValueJsonString = RedisManager.get(lockKey);
             JsonNode lockValue = JSON.parse(lockValueJsonString, JsonNode.class);
-            // return RedisReentrantLockUtils.getMacAddress().equals(lockValue.get(RedisReentrantLockUtils.MAC).textValue()) &&
             assert lockValue != null;
-            return RedisReentrantLockUtils.getJvmId() == lockValue.get(RedisReentrantLockUtils.JVM).intValue() &&
+            return RedisReentrantLockUtils.getMacAddress().equals(lockValue.get(RedisReentrantLockUtils.MAC).textValue()) &&
+                    RedisReentrantLockUtils.getJvmId() == lockValue.get(RedisReentrantLockUtils.JVM).intValue() &&
                     RedisReentrantLockUtils.getThreadId() == lockValue.get(RedisReentrantLockUtils.THREAD).intValue();
         }
         return false;

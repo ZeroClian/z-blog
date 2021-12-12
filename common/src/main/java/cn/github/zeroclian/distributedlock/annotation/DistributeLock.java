@@ -8,7 +8,7 @@ import java.lang.annotation.*;
 /**
  * 分布式锁
  *
- * @Author: qiyiguo
+ * @Author: ZeroClian
  * @Date: 2021-12-09 11:03 上午
  */
 @Target(ElementType.METHOD)

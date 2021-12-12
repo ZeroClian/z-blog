@@ -13,7 +13,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 /**
- * @Author: qiyiguo
+ * @Author: ZeroClian
  * @Date: 2021-12-10 11:40 上午
  */
 @Slf4j
@@ -64,7 +64,7 @@ public class DistributeLockAspect {
             daemonThread.start();
             return joinPoint.proceed();
         } finally {
-            // daemonThread.interrupt();
+            daemonThread.interrupt();
             lock.unlock();
         }
     }

@@ -3,7 +3,7 @@ package cn.github.zeroclian.distributedlock.strategy;
 /**
  * 生成key的策略
  *
- * @Author: qiyiguo
+ * @Author: ZeroClian
  * @Date: 2021-12-09 10:00 上午
  */
 public enum LockKeyStrategy {

@@ -26,7 +26,7 @@ import java.util.HashMap;
  * 1.生成key、value
  * 2.获取分布式注解
  *
- * @Author: qiyiguo
+ * @Author: ZeroClian
  * @Date: 2021-12-09 10:16 上午
  */
 public class RedisReentrantLockUtils {
@@ -44,6 +44,12 @@ public class RedisReentrantLockUtils {
      */
     public static final String THREAD = "threadId";
 
+    /**
+     * 通过切点的key策略生成锁的key
+     *
+     * @param joinPoint
+     * @return
+     */
     public static String getLockKey(ProceedingJoinPoint joinPoint) {
         DistributeLock distributeLock = getDistributeLock(joinPoint);
         StringBuffer lockKey = new StringBuffer();
@@ -81,7 +87,7 @@ public class RedisReentrantLockUtils {
      */
     public static String getLockValue() {
         HashMap<String, Object> map = new HashMap<>(3);
-        // map.put(MAC, getMacAddress());
+        map.put(MAC, getMacAddress());
         map.put(JVM, getJvmId());
         map.put(THREAD, getThreadId());
         return JSON.toJSON(map);
@@ -146,6 +152,12 @@ public class RedisReentrantLockUtils {
         }
     }
 
+    /**
+     * 获取方法签名
+     *
+     * @param method
+     * @return
+     */
     private static String getSignature(Method method) {
         StringBuilder builder = new StringBuilder();
         Class<?> returnType = method.getReturnType();
